@@ -1,0 +1,19 @@
+Goals before starting:
+
+I want to build something allows me to open up some audio files from my google drive
+
+-should access google drive from an api
+-audio files are long so maybe download or store them only when we want to listen to a specific one
+-have a nice navigation scroll and navigation arrow feature
+-maybe add in some kind of animation on the navigation
+
+-be able to listen to the audio with the app minimized
+-when playing audio file, have play, stop, pause, and time UI
+
+flatView animation:
+-also uses MotiView instead of view
+https://www.youtube.com/watch?v=pTtxhuThMew&ab_channel=CatalinMiron
+
+used MotiView and react-native-reanimated
+(npm i @motify/components)
+(npm i react-native-reanimated)
