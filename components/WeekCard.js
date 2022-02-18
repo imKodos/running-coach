@@ -1,7 +1,6 @@
 import { Entypo, Feather } from "@expo/vector-icons";
 import { MotiView } from "@motify/components";
 import * as React from "react";
-import { LinearGradient } from "expo-linear-gradient";
 import {
   Dimensions,
   FlatList,
@@ -9,6 +8,7 @@ import {
   TouchableOpacity,
   Text,
   View,
+  Image,
 } from "react-native";
 
 function WeekCard() {
@@ -31,6 +31,37 @@ function WeekCard() {
   const ref = React.useRef(null);
   const [index, setIndex] = React.useState(0);
   const [viewPosition, setViewPosition] = React.useState(0);
+  const [selRunIdx, setSelRunIdx] = React.useState(null);
+
+  function renderRunCards() {
+    const runCards = [];
+    for (let i = 0; i <= 2; i++) {
+      runCards.push(
+        <TouchableOpacity
+          key={"runCard" + i}
+          style={[
+            styles.audioCard,
+            selRunIdx === i ? styles.audioCardSel : styles.audioCardDefault,
+          ]}
+          onPress={() => {
+            if (selRunIdx === i) {
+              //if this was previously selected, unselect
+              setSelRunIdx(null);
+              return;
+            }
+            setSelRunIdx(i);
+          }}
+        >
+          <Text>run {i} test</Text>
+          <Image
+            source={require("../assets/unchecked.png")}
+            style={{ height: 50, width: 50 }}
+          />
+        </TouchableOpacity>
+      );
+    }
+    return runCards;
+  }
 
   React.useEffect(() => {
     ref.current?.scrollToIndex({
@@ -44,11 +75,7 @@ function WeekCard() {
   return (
     //   set the container as a column flex
     <View style={styles.container}>
-      <LinearGradient
-        style={styles.weekHeader}
-        colors={["grey", "#BEBEBE", "grey"]}
-        // colors={["#BEBEBE", "grey", "#BEBEBE"]}
-      >
+      <View style={styles.weekHeader}>
         <View style={styles.leftArrowView}>
           <TouchableOpacity
             onPress={() => {
@@ -96,18 +123,8 @@ function WeekCard() {
             </View>
           </TouchableOpacity>
         </View>
-      </LinearGradient>
-      <View style={styles.contentContainer}>
-        <View style={styles.audioCard}>
-          <Text>run 1 test</Text>
-        </View>
-        <View style={styles.audioCard}>
-          <Text>run 2 test</Text>
-        </View>
-        <View style={styles.audioCard}>
-          <Text>run 3 test</Text>
-        </View>
       </View>
+      <View style={styles.contentContainer}>{renderRunCards()}</View>
     </View>
   );
 }
@@ -127,6 +144,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     borderBottomWidth: 1.5,
     borderBottomColor: "black",
+    backgroundColor: "#BEBEBE",
   },
   leftArrowView: {
     flex: 1,
@@ -143,16 +161,23 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   contentContainer: {
-    margin: 30,
+    margin: 20,
     flex: 1,
   },
   audioCard: {
-    flex: 1,
     backgroundColor: "#BEBEBE",
     margin: 10,
     borderRadius: 15,
     justifyContent: "center",
     paddingLeft: 10,
+  },
+  audioCardSel: {
+    flex: 2,
+    backgroundColor: "white",
+  },
+  audioCardDefault: {
+    flex: 1,
+    backgroundColor: "#BEBEBE",
   },
 });
 

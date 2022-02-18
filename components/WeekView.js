@@ -1,6 +1,7 @@
 import { Entypo, Feather } from "@expo/vector-icons";
 import { MotiView } from "@motify/components";
 import * as React from "react";
+import { LinearGradient } from "expo-linear-gradient";
 
 import {
   Dimensions,
@@ -16,16 +17,18 @@ const { width, height } = Dimensions.get("screen");
 
 function WeekView() {
   return (
-    <View style={styles.container}>
+    <LinearGradient
+      style={styles.container}
+      colors={["dodgerblue", "blue", "black"]}
+    >
       <WeekCard></WeekCard>
-    </View>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 3,
-    backgroundColor: "blue",
   },
 });
 

@@ -1,0 +1,6 @@
+-make the audio containers clickable.
+  -when clicked, expand them by a little and display the download/play button
+    -if play is pressed, enable green checkmark on right side suggesting it was listened to
+
+-make the week card container swipe-able and transition it to another week when navigation is pressed
+  -get rid of the arrow keys that arent in use (ie left arrow cant be used if at idx 0)
