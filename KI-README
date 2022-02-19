@@ -17,3 +17,5 @@ https://www.youtube.com/watch?v=pTtxhuThMew&ab_channel=CatalinMiron
 used MotiView and react-native-reanimated
 (npm i @motify/components)
 (npm i react-native-reanimated)
+
+To start project, open in VS Code, open a terminal and type "npm start"
